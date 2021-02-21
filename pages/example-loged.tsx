@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  useAuthUser,
   withAuthUser,
   withAuthUserTokenSSR,
   AuthAction,
@@ -21,10 +20,9 @@ const styles = {
 const ExampleLoged: React.FC<{ favoriteColor: string }> = ({
   favoriteColor,
 }) => {
-  const AuthUser = useAuthUser();
   return (
     <div>
-      <Header email={AuthUser.email} signOut={AuthUser.signOut} />
+      <Header />
       <div style={styles.content}>
         <div style={styles.infoTextContainer}>
           <h3>Example: SSR + data fetching with ID token</h3>

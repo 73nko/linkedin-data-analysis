@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  useAuthUser,
-  withAuthUser,
-  withAuthUserTokenSSR,
-} from "next-firebase-auth";
+import { withAuthUser, withAuthUserTokenSSR } from "next-firebase-auth";
 import Header from "../components/Header";
-import FirebaseAuth from "../components/FirebaseAuth";
 import DemoPageLinks from "../components/DemoPageLink";
 
 const styles = {
@@ -17,11 +12,10 @@ const styles = {
   },
 };
 
-const Demo = () => {
-  const AuthUser = useAuthUser();
+const Index = () => {
   return (
     <div>
-      <Header email={AuthUser.email} signOut={AuthUser.signOut} />
+      <Header />
       <div style={styles.content}>
         <div style={styles.infoTextContainer}>
           <h3>Home</h3>
@@ -34,7 +28,6 @@ const Demo = () => {
             and load the authed user only on the client side.
           </p>
         </div>
-        <FirebaseAuth />
         <DemoPageLinks />
       </div>
     </div>
@@ -43,4 +36,4 @@ const Demo = () => {
 
 export const getServerSideProps = withAuthUserTokenSSR()();
 
-export default withAuthUser()(Demo);
+export default withAuthUser()(Index);

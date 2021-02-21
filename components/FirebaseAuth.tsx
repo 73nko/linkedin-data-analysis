@@ -28,8 +28,6 @@ const firebaseAuthConfig = {
 };
 
 const FirebaseAuth = () => {
-  // Do not SSR FirebaseUI, because it is not supported.
-  // https://github.com/firebase/firebaseui-web/issues/213
   const [renderAuth, setRenderAuth] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
