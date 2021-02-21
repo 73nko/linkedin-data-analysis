@@ -19,10 +19,6 @@ const firebaseAuthConfig = {
         prompt: "select_account",
       },
     },
-    {
-      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      requireDisplayName: false,
-    },
   ],
   signInSuccessUrl: "/",
   credentialHelper: "none",
