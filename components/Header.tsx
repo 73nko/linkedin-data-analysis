@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
 
-import { Avatar, AvatarBadge, AvatarGroup } from "@chakra-ui/react";
+import { Avatar, Button, useColorMode } from "@chakra-ui/react";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 import { useAuthUser } from "next-firebase-auth";
 
@@ -19,8 +20,8 @@ const styles = {
 };
 
 const Header = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
   const auth = useAuthUser();
-
   const { email, signOut } = auth;
   const { photoURL, displayName } = auth?.firebaseUser || {};
   return (
@@ -50,6 +51,9 @@ const Header = () => {
           </Link>
         </>
       )}
+      <Button onClick={toggleColorMode} variant={"ghost"}>
+        {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+      </Button>
     </div>
   );
 };
